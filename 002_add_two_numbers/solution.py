@@ -1,12 +1,15 @@
+"""
+This is a manually optimized verion. It exploits in-place operations
+and greedily use existing chains.
+
+A more functional version is `./solution_functional.py`. Although
+I don't like functional programming in Python.
+"""
 from list_node import ListNode
 
 
 class Solution(object):
     def addTwoNumbers(self, l1, l2):
-        """
-        This is a manually optimized verion. It exploits in-place operations
-        and greedily use existing chains.
-        """
         carry = 0
         head = l1
         last = None
@@ -42,12 +45,3 @@ class Solution(object):
 
         return head
 
-    # If you really want to functional (TM), do the following
-
-    def addTwoNumbersFunctional(self, l1, l2):
-        return iter_to_ll(
-            carry([
-                x + y
-                for x, y in izip_longest(
-                    ll_to_iter(l1), ll_to_iter(l2), fillvalue=0)
-            ]))
